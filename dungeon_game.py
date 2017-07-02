@@ -67,8 +67,10 @@ def draw_map(player):
 def game_loop():
 
 	monster, door, player = get_locations()
+	playing = True
 
-	while True:
+	while playing:
+		clear_sreen()
 		draw_map(player)
 		valid_moves = get_moves(player)
 		print('You are currently in room {}'.format(player)) # fill with player position
@@ -80,6 +82,7 @@ def game_loop():
 
 
 		if move == 'QUIT':
+			print('\nSee you next time!\n')
 			break
 
 		if move in valid_moves:
@@ -87,13 +90,17 @@ def game_loop():
 
 			if player == monster:
 				print('The monster got you!!! Good luck next time!')
-				break
+				playing = False
+
 			if player == door:
 				print('You escaped! Congratulations!')
-				break
+				playing = False
 		else:
 			input('Walls are hard! Dont run into them')
-		clear_sreen()
+	else:
+		if input('Play again? [Y/n] ').lower() != 'n':
+			game_loop()
+		
 
 
 clear_sreen()
