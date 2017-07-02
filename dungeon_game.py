@@ -42,24 +42,31 @@ def get_moves(player):
 
 	return moves
 
-monster, door, player = get_locations()
+def game_loop():
 
-while True:
-	valid_moves = get_moves(player)
-	clear_sreen()
-	print('Welcome to the Dungeon!')
-	print('You are currently in room {}'.format(player)) # fill with player position
-	print('You can move {}'.format(', '.join(valid_moves))) # fill with availabe moves
-	print('Enter QUIT to quit')
+	monster, door, player = get_locations()
 
-	move = input('> ')
-	move = move.upper()
+	while True:
 
-	if move in valid_moves:
-		move_player(player, move)
-	else:
-		print('Walls are hard! Dont run into them')
-		continue
+		print('You are currently in room {}'.format(player)) # fill with player position
+		print('You can move {}'.format(', '.join(valid_moves))) # fill with availabe moves
+		print('Enter QUIT to quit')
 
-	if move == 'QUIT':
-		break
+		move = input('> ')
+		move = move.upper()
+
+		if move in valid_moves:
+			player = move_player(player, move)
+		else:
+			print('Walls are hard! Dont run into them')
+			continue
+
+		if move == 'QUIT':
+			break
+
+valid_moves = get_moves(player)
+clear_sreen()
+print('Welcome to the Dungeon!')
+input('Press return to start!')
+clear_sreen()
+game_loop()
