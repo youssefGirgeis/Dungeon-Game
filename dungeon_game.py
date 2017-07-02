@@ -19,6 +19,15 @@ def move_player(player, move):
 
 def get_moves(player):
 	moves = ['LEFT', 'RIGHT', 'UP', 'DOWN']
+	x, y = player
+	if x == 0:
+		moves.remove('LEFT')
+	if x == 4:
+		moves.remove('RIGHT')
+	if y == 0:
+		moves.remove('UP')
+	if y == 4:
+		moves.remove('DOWN')
 
 	return moves
 
