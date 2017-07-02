@@ -15,7 +15,18 @@ def get_locations():
 
 def move_player(player, move):
 
-	return player
+	x, y = player
+
+	if move == 'LEFT':
+		x -= 1
+	if move == 'RIGHT':
+		x += 1
+	if move == 'UP':
+		y += 1
+	if move == 'DOWN':
+		y += 1
+
+	return (x, y)
 
 def get_moves(player):
 	moves = ['LEFT', 'RIGHT', 'UP', 'DOWN']
@@ -34,13 +45,21 @@ def get_moves(player):
 monster, door, player = get_locations()
 
 while True:
+	valid_moves = get_moves(player)
+	clear_sreen()
 	print('Welcome to the Dungeon!')
-	print('You are currently in room {}') # fill with player position
-	print('You can move {}') # fill with availabe moves
+	print('You are currently in room {}'.format(player)) # fill with player position
+	print('You can move {}'.format(', '.join(valid_moves))) # fill with availabe moves
 	print('Enter QUIT to quit')
 
 	move = input('> ')
 	move = move.upper()
+
+	if move in valid_moves:
+		move_player(player, move)
+	else:
+		print('Walls are hard! Dont run into them')
+		continue
 
 	if move == 'QUIT':
 		break
