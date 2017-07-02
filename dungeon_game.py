@@ -11,11 +11,7 @@ def clear_sreen():
 	os.system('cls' if os.name == 'nt' else 'clear')
 
 def get_locations():
-	monster = None
-	door = None
-	player = None
-
-	return (monster, door, player)
+	return random.sample(CELLS, 3)
 
 def move_player(player, move):
 
@@ -25,6 +21,8 @@ def get_moves(player):
 	moves = ['LEFT', 'RIGHT', 'UP', 'DOWN']
 
 	return moves
+
+monster, door, player = get_locations()
 
 while True:
 	print('Welcome to the Dungeon!')
