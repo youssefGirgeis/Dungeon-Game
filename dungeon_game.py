@@ -108,3 +108,19 @@ print('Welcome to the Dungeon!')
 input('Press return to start!')
 clear_sreen()
 game_loop()
+
+
+#Make some or all of the following changes to your game:
+
+#Change your player to a dictionary with a key that holds onto where the player has been. Then, when drawing the map, show . for every cell they've been in.
+#Add more cells.
+#Move the monster randomly after the player moves.
+#Show the monster.
+#Keep a scoreboard for multiple plays.
+#Add a second or third monster.
+#Add a debug mode to show where the monster(s) and door are all the time.
+
+
+
+
+
